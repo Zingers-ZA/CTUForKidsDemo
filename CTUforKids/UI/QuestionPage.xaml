@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="CTUforKids.UI.QuestionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CTUforKids.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Question:"      Grid.Row="1" Grid.Column="1" FontSize="30" HorizontalAlignment="Left" ></TextBlock>
+        <TextBlock Text="{Binding QuestionNumber}" Grid.Row="1" Grid.Column="1" FontSize="30" HorizontalAlignment="Left" Margin="135,0,0,0"></TextBlock>
+
+        <StackPanel Background="WhiteSmoke" Grid.Row="2" Grid.Column="1">
+            <TextBlock Text="{Binding QuestionText}" FontSize="26" HorizontalAlignment="Left" TextAlignment="Center" ></TextBlock>
+        </StackPanel>
+
+        <StackPanel Background="WhiteSmoke" Grid.Row="4" Grid.Column="1">
+            <TextBox Name="Answer_Text" Text="{Binding AnswerInput, Mode=TwoWay}" Background="WhiteSmoke" BorderThickness="0" Height="135"></TextBox>
+        </StackPanel>
+
+        <Button Name="btn_Next"   Command="{Binding NextQuestionTest, Mode=TwoWay}" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" Height="40" Width="130" Content="Next"></Button>
+        <Button Name="btn_Submit" Command="{Binding SubmitTest,   Mode=TwoWay}"     Grid.Row="7" Grid.Column="1" HorizontalAlignment="Right" Height="40" Width="130" Content="Submit Test"></Button>
+
+        
+    </Grid>
+</Page>

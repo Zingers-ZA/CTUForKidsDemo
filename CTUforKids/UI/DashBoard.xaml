@@ -1,0 +1,70 @@
+﻿<Page
+    x:Class="CTUforKids.UI.DashBoard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CTUforKids.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <RelativePanel Name="Rpanel" Grid.Row="1" Grid.Column="1">
+            <Button Margin="0,0,20,0" Name="btn_Start_Test"  RelativePanel.AlignVerticalCenterWithPanel="true" RelativePanel.AlignRightWithPanel="true" Command="{Binding StartTest}" Content="Start test"      HorizontalAlignment="Center" Width="150"></Button>
+            <TextBox Text="{Binding ChosenQuestionAmount, Mode=TwoWay}" Margin="20,0,0,0" PlaceholderText="Enter amount of questions" RelativePanel.RightOf="cmb_Difficulty" RelativePanel.AlignVerticalCenterWithPanel="true" Width ="100" ></TextBox>
+            <ComboBox Name="cmb_Difficulty" SelectedValuePath="Content" SelectedValue="{Binding ChosenDifficulty, Mode=TwoWay}" RelativePanel.AlignVerticalCenterWithPanel="true" Width="150">
+                <ComboBoxItem>Easy</ComboBoxItem>
+                <ComboBoxItem>Medium</ComboBoxItem>
+                <ComboBoxItem>Hard</ComboBoxItem>
+            </ComboBox>
+        </RelativePanel>
+
+        
+        
+        <Button Name="btn_Practice_Test" Command="{Binding StartPractice}" Content="Start Practice" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Width="150"></Button>
+
+        <TextBlock Text="Previous scores:" FontSize="28" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
+        
+        <Grid BorderThickness="0,0,0,1" BorderBrush="Black" Grid.Row="4" Grid.Column="1" Height="25" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Difficulty:" />
+            <TextBlock Grid.Column="1" Text="Score:" />
+        </Grid>
+
+        <ScrollViewer Name="Render_Tests" Grid.Row="5" Grid.Column="1" Background="WhiteSmoke">
+            <ItemsControl ItemsSource="{Binding StudentTests}" >
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid BorderThickness="2" BorderBrush="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding Difficulty}" />
+                            <TextBlock Grid.Column="1" Text="{Binding ScoreToString}" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Page>
